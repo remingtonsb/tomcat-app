@@ -16,3 +16,6 @@ sudo docker push $(oc get routes -n default | grep docker-registry | awk '{print
 
 6- create app based image
 oc new-app --image-stream=tomcat-app-showhostname/tomcat-app-showhostname:lastest
+
+7- Expose svc to access route
+oc expose svc tomcat-app-showhostname
