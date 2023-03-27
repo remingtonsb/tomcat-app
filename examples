@@ -8,6 +8,9 @@ cd tomcatapp-clusterhostname
 3- Build image with app
 sudo docker build . -t $(oc get routes -n default | grep docker-registry | awk '{print $2}')/tomcat-app-showhostname/tomcat-app-showhostname:lastest
 
+For OpenShift 4.x:
+sudo docker build . -t $(oc get routes -n openshift-image-registry | grep route | awk '{print $2}')/tomcat-app-showhostname/tomcat-app-showhostname:lastest
+
 4- logar no registry
 sudo docker login $(oc get routes -n default | grep docker-registry | awk '{print $2}') -u $(oc whoami) -p $(oc whoami -t)
 
